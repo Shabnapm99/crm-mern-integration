@@ -24,8 +24,10 @@ function LoginPage() {
                 navigate('/customers')
             }
 
+
         } catch (error) {
-            console.log(error.message)
+            console.log(error.message);
+            setShowError(true);
         }
         
     }
@@ -76,7 +78,7 @@ function LoginPage() {
 
                         {/* error paragraph */}
                         {showError && <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-                            Invalid email format
+                            Invalid email or password
                         </p>}
                     </div>
 

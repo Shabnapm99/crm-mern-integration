@@ -39,10 +39,16 @@ function SignUpPage() {
                     }
                     else {
                         try {
-                            let response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, { name, email, password, role:role.toUpperCase(),username});
+                            let response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, { name, email, password, role: role.toUpperCase(), username });
 
                             if (response.status === 201) {
                                 console.log("user created successfully")
+                                setShowError(false);
+                                setName('');
+                                setEmail('');
+                                setRole('');
+                                setUsername('');
+                                setPassword('');//clear the fields on success only
                                 navigate('/login')
                             } else {
                                 setShowError(true);
@@ -52,16 +58,11 @@ function SignUpPage() {
 
                         } catch (error) {
 
-                            console.log("Error happened while posting the data", error.message)
+                            console.log("Error happened while posting the data", error.message);
+                            setShowError(true);
+                            setErrorMessage(error.message)
                         }
-
                     }
-        setShowError(false);
-        setName('');
-        setEmail('');
-        setRole('');
-        setUsername('');
-        setPassword('');
     }
 
     return (

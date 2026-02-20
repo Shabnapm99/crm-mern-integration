@@ -22,7 +22,7 @@ app.use('/api/customers',validateToken,customerRoute);//only logged in user can 
 dbConnect();
 
 // app.listen(PORT,()=>console.log("Server is running on port : ",PORT));
-export default app;
+export default app;//while deploying in versel we need to export this
 
 
 
