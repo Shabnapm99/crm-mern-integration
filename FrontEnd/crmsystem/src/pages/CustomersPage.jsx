@@ -17,7 +17,7 @@ function CustomersPage() {
         let getCustomers = async () => {
             try {
                 const token = localStorage.getItem("securedToken");
-                let response = await axios.get('http://localhost:4000/api/customers', {
+                let response = await axios.get(`${import.meta.env.VITE_API_URL}/api/customers`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -40,7 +40,7 @@ function CustomersPage() {
        
         const token = localStorage.getItem("securedToken")
         try {
-            let response = await axios.delete(`http://localhost:4000/api/customers/${id}`, {
+            let response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/customers/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -61,7 +61,7 @@ function CustomersPage() {
         let getCustomers = async () => {
             try {
                 const token = localStorage.getItem("securedToken");
-                let response = await axios.get(`http://localhost:4000/api/customers/${id}`, {
+                let response = await axios.get(`${import.meta.env.VITE_API_URL}/api/customers/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

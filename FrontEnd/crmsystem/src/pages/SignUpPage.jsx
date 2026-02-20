@@ -39,7 +39,7 @@ function SignUpPage() {
                     }
                     else {
                         try {
-                            let response = await axios.post('http://localhost:4000/api/register', { name, email, password, role:role.toUpperCase(),username});
+                            let response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, { name, email, password, role:role.toUpperCase(),username});
 
                             if (response.status === 201) {
                                 console.log("user created successfully")

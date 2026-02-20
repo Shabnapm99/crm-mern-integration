@@ -14,7 +14,7 @@ function LoginPage() {
 
     async function handleLogin() {
         try {
-            let response = await axios.post('http://localhost:4000/api/login', { email, password });
+            let response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, { email, password });
             if (response.status === 200) {
                 console.log("Logged in successfully!! token: ", response.data.token)
                 // console.log(response.data)

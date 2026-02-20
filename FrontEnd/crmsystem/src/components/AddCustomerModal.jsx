@@ -24,7 +24,7 @@ function AddCustomerModal({ onClose, isUpdating, selectedCustomer, setCustomers 
             const token = localStorage.getItem("securedToken");
             //To update
             if (isUpdating) {
-                let response = await axios.put(`http://localhost:4000/api/customers/${selectedCustomer._id}`,
+                let response = await axios.put(`${import.meta.env.VITE_API_URL}/api/customers/${selectedCustomer._id}`,
                     {
                         name, status, contact_info: { mobile, email },
                     },
@@ -42,7 +42,7 @@ function AddCustomerModal({ onClose, isUpdating, selectedCustomer, setCustomers 
             }
             //To Add 
             else {
-                let response = await axios.post('http://localhost:4000/api/customers', {
+                let response = await axios.post(`${import.meta.env.VITE_API_URL}/api/customers`, {
                     name, status, contact_info: { mobile, email },
                 },
                     {
