@@ -1,7 +1,24 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function Home() {
+    useEffect(() => {
+        async function checkAPI() {
+            try {
+                let response = await axios.get(`${import.meta.env.VITE_API_URL}`);
+                if (response.status === 200) {
+                    console.log("Logged in successfully!! token: ", response.data.msg)
+
+                }
+
+            } catch (error) {
+                console.log(error.message)
+            }
+
+        }
+        checkAPI()
+    }, [])
     return (
         <div className="min-h-screen bg-[#101622] ">
 
