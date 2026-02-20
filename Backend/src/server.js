@@ -21,26 +21,8 @@ app.use('/api/customers',validateToken,customerRoute);//only logged in user can 
 
 dbConnect();
 
-app.listen(PORT,()=>console.log("Server is running on port : ",PORT));
+// app.listen(PORT,()=>console.log("Server is running on port : ",PORT));
+export default app;
 
 
 
-// import express from "express";
-
-// const app = express();
-// const PORT = 4000; // you can change if 4000 is acting weird
-
-// // simple test route
-// app.get("/", (req, res) => {
-//   res.send("✅ Backend is alive");
-// });
-
-// // JSON test route
-// app.post("/test-json", (req, res) => {
-//   res.json({ message: "POST works" });
-// });
-
-// // start server
-// app.listen(PORT, () => {
-//   console.log(`Server running at port: ${PORT}`);
-// });
