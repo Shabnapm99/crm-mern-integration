@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+screenRecording/
+package-lock.json
