@@ -29,7 +29,12 @@ const customerSchema = new Schema({
         enum: ["ACTIVE", "INACTIVE"],//enum is used to restrict a field to a fixed set of allowed values.
         default: "ACTIVE"
     },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    }
 
 }, { timestamp: true });
 
-export default mongoose.model('Customer',customerSchema);
+export default mongoose.model('Customer', customerSchema);

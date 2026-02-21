@@ -6,12 +6,14 @@ import CustomerModel from "../models/CustomerModel.js";
 export const createCustomer = async (req, res) => {
     try {
         const customer = req.body;
+        // Associate the customer with the logged-in user
+        customer.createdBy = req.user._id;
 
         const newCustomer = await CustomerModel.create(customer);
 
         res.status(201).json({
             message: "Customer created successfully",
-            customer:newCustomer
+            customer: newCustomer
         });
 
     } catch (error) {
@@ -27,8 +29,8 @@ export const createCustomer = async (req, res) => {
 
 export const getCustomers = async (req, res) => {
     try {
-
-        const customers = await CustomerModel.find({}).select('-__v');
+        
+        const customers = await CustomerModel.find({ createdBy: req.user._id }).select('-__v');// Only fetch customers created by this user
         res.json({ customers });
 
     } catch (error) {
@@ -45,7 +47,7 @@ export const getCustomers = async (req, res) => {
 
 export const getACustomer = async (req, res) => {
     try {
-        const customer = await CustomerModel.findById(req.params.id);
+        const customer = await CustomerModel.findById({_id: req.params.id, createdBy: req.user._id});
         res.status(200).json({ customer })
     } catch (error) {
         console.log(error.message);
